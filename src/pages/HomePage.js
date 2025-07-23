@@ -1,13 +1,17 @@
 import React from 'react';
-import WallList from '../components/WallList';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import WallList from './pages/WallList';
+import RouteList from './pages/RouteList';
 
-function HomePage() {
+function App() {
   return (
-    <div>
-      <h1>Welcome to the CRouteLogger</h1>
-      <WallList />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<WallList />} />
+        <Route path="/walls/:wallId" element={<RouteList />} />
+      </Routes>
+    </Router>
   );
 }
 
-export default HomePage;
+export default App;
