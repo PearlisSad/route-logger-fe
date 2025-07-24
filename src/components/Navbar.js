@@ -1,27 +1,32 @@
 import React from 'react';
-import { Navbar, Container, Nav } from 'react-bootstrap';
+import { Navbar as RBNavbar, Container, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-function NavbarComponent() {
+function Navbar() {
   return (
-    <Navbar bg="dark" variant="dark" expand="lg">
+    <RBNavbar bg="dark" variant="dark" expand="lg">
       <Container>
-        <Navbar.Brand as={Link} to="/">
+        <RBNavbar.Brand as={Link} to="/">
           RouteLogger
-        </Navbar.Brand>
+        </RBNavbar.Brand>
 
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
+        <RBNavbar.Toggle aria-controls="basic-navbar-nav" />
+        <RBNavbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link as={Link} to="/walls">
               Walls
             </Nav.Link>
-            {/* Other nav links */}
+            <Nav.Link as={Link} to="/profile">
+              Profile
+            </Nav.Link>
+            <Nav.Link as={Link} to="/random">
+              Random
+            </Nav.Link>
           </Nav>
-        </Navbar.Collapse>
+        </RBNavbar.Collapse>
       </Container>
-    </Navbar>
+    </RBNavbar>
   );
 }
 
-export default NavbarComponent;
+export default Navbar;
