@@ -1,26 +1,35 @@
+// src/components/AddNewRoute.js
 import React, { useState } from 'react';
-import { Button } from 'react-bootstrap';
+import { Modal, Button } from 'react-bootstrap';
 import RouteForm from './RouteForm';
 
 function AddNewRoute({ wallId, onAdd }) {
-  const [showForm, setShowForm] = useState(false);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
-    <div className="mb-4">
-      {!showForm && (
-        <Button onClick={() => setShowForm(true)}>Add Route</Button>
-      )}
-      {showForm && (
-        <RouteForm
-          wallId={wallId}
-          onAdd={(newRoute) => {
-            onAdd(newRoute);
-            setShowForm(false);
-          }}
-          onCancel={() => setShowForm(false)}
-        />
-      )}
-    </div>
+    <>
+      <Button variant="success" onClick={handleShow}>
+        Add Route
+      </Button>
+
+      <Modal show={show} onHide={handleClose} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Add New Route</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <RouteForm
+            wallId={wallId}
+            onAdd={(newRoute) => {
+              onAdd(newRoute);
+              handleClose(); // close modal after submit
+            }}
+          />
+        </Modal.Body>
+      </Modal>
+    </>
   );
 }
 
