@@ -17,8 +17,8 @@ Make sure you have the following installed:
 
 Clone the repository and install all required packages:
 
-git clone https://github.com/PearlisSad/RouteLogger-frontend.git
-cd RouteLogger-frontend
+git clone https://github.com/PearlisSad/RouteLogger-frontend.git,
+cd RouteLogger-frontend,
 npm install
 
 This will install all dependencies listed in your package.json, including:
