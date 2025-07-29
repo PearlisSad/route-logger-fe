@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+Route Logger Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the React frontend for the Route Logger project, built using create-react-app, react-router-dom, and react-bootstrap. It communicates with a Django backend to allow users to log and view climbing routes.
+🚀 Getting Started
+1. 📦 Prerequisites
 
-## Available Scripts
+Make sure you have the following installed:
 
-In the project directory, you can run:
+    Node.js and npm
+    👉 Download from https://nodejs.org
+    Verify installation:
 
-### `npm start`
+    node -v
+    npm -v
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. 🛠 Installation
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Clone the repository and install all required packages:
 
-### `npm test`
+git clone https://github.com/PearlisSad/RouteLogger-frontend.git
+cd RouteLogger-frontend
+npm install
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This will install all dependencies listed in your package.json, including:
 
-### `npm run build`
+    react
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    react-dom
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    react-router-dom
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    react-router-bootstrap
 
-### `npm run eject`
+    axios
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+    bootstrap
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    react-bootstrap
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    react-scripts
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+    Testing libraries:
 
-## Learn More
+        @testing-library/react
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+        @testing-library/jest-dom
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+        @testing-library/user-event
 
-### Code Splitting
+        @testing-library/dom
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+        web-vitals
 
-### Analyzing the Bundle Size
+3. ▶️ Run the App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Start the development server:
 
-### Making a Progressive Web App
+npm start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Then open http://localhost:3000 in your browser.
 
-### Advanced Configuration
+This project uses a proxy to connect to a Django backend at:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+http://127.0.0.1:8000
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Ensure your backend server is running before testing functionality.
