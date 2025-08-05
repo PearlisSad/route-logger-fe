@@ -1,66 +1,45 @@
-Route Logger Frontend
+# Route Logger Front End
 
-This is the React frontend for the Route Logger project, built using create-react-app, react-router-dom, and react-bootstrap. It communicates with a Django backend to allow users to log and view climbing routes.
-🚀 Getting Started
-1. 📦 Prerequisites
+This is the React frontend  for the Route Logger app
 
-Make sure you have the following installed:
+### Dependencies
 
-    Node.js and npm
-    👉 Download from https://nodejs.org
-    Verify installation:
+* **[Node.js](https://nodejs.org/en)**
 
-    node -v
-    npm -v
+## Description
+* **React** – JavaScript frontend framework used to build a responsive single-page application (SPA).
+* **react-router-dom** – Handles client-side routing and navigation between views.
+* **react-router-bootstrap** – Integrates React Router with Bootstrap-styled components for seamless navigation.
+* **axios** – Promise-based HTTP client used to send requests to the Django REST API and handle responses.
 
-2. 🛠 Installation
+## Getting Started
 
-Clone the repository and install all required packages:
+* [Clone repository from Github](https://github.com/PearlisSad/route-logger-fe.git)
 
-git clone https://github.com/PearlisSad/RouteLogger-frontend.git,
-cd RouteLogger-frontend,
-npm install
+* Install React
+    >npm install
 
-This will install all dependencies listed in your package.json, including:
+### Executing program
 
-    react
-
-    react-dom
-
-    react-router-dom
-
-    react-router-bootstrap
-
-    axios
-
-    bootstrap
-
-    react-bootstrap
-
-    react-scripts
-
-    Testing libraries:
-
-        @testing-library/react
-
-        @testing-library/jest-dom
-
-        @testing-library/user-event
-
-        @testing-library/dom
-
-        web-vitals
-
-3. ▶️ Run the App
-
-Start the development server:
-
+* **Running Server**
+```
 npm start
+```
 
-Then open http://localhost:3000 in your browser.
+## Help
 
-This project uses a proxy to connect to a Django backend at:
+Any advise for common problems or issues.
+```
+command to run if program contains helper info
+```
 
-http://127.0.0.1:8000
+## Authors
 
-Ensure your backend server is running before testing functionality.
+Contributors names and contact info
+  
+[Rapha](https://github.com/PearlisSad)
+
+## Acknowledgments
+
+Inspiration, code snippets, etc.
+* [Django React Authentication]([https://github.com/matiassingers/awesome-readme](https://github.com/desphixs/JWT-Django-Rest-Framework-React))
