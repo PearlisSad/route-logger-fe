@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 
-function RouteForm({ wallId, onAdd, onCancel }) {
+export default function RouteForm({ wallId, onAdd, onCancel }) {
   const [color, setColor] = useState('');
   const [grade, setGrade] = useState('');
   const [rating, setRating] = useState('');
@@ -60,7 +60,6 @@ function RouteForm({ wallId, onAdd, onCancel }) {
   return (
     <Form onSubmit={handleSubmit} className="mb-3">
       {error && <Alert variant="danger">{error}</Alert>}
-
       <Form.Group controlId="color" className="mb-2">
         <Form.Label>Color</Form.Label>
         <Form.Control
@@ -71,7 +70,6 @@ function RouteForm({ wallId, onAdd, onCancel }) {
           required
         />
       </Form.Group>
-
       <Form.Group controlId="grade" className="mb-2">
         <Form.Label>Grade</Form.Label>
         <Form.Control
@@ -82,7 +80,6 @@ function RouteForm({ wallId, onAdd, onCancel }) {
           required
         />
       </Form.Group>
-
       <Form.Group controlId="rating" className="mb-3">
         <Form.Label>Rating (optional)</Form.Label>
         <Form.Control
@@ -94,7 +91,6 @@ function RouteForm({ wallId, onAdd, onCancel }) {
           max={5}
         />
       </Form.Group>
-
       <Button variant="primary" type="submit" disabled={submitting}>
         {submitting ? 'Adding...' : 'Add Route'}
       </Button>{' '}
@@ -104,5 +100,3 @@ function RouteForm({ wallId, onAdd, onCancel }) {
     </Form>
   );
 }
-
-export default RouteForm;

@@ -1,9 +1,8 @@
-// src/components/AddNewRoute.js
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import RouteForm from './RouteForm';
+import RouteForm from './route-form.component';
 
-function AddNewRoute({ wallId, onAdd }) {
+export default function AddNewRoute({ wallId, onAdd }) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -32,5 +31,3 @@ function AddNewRoute({ wallId, onAdd }) {
     </>
   );
 }
-
-export default AddNewRoute;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Container, Row, Col, Card, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -8,16 +8,16 @@ function WallList() {
 
   useEffect(() => {
     fetch('/api/walls/')
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         setWalls(data);
         setLoading(false);
       })
-      .catch(err => {
+      .catch((err) => {
         console.error(err);
         setLoading(false);
       });
-  }, []);
+  });
 
   if (loading) {
     return (
@@ -32,13 +32,18 @@ function WallList() {
     <Container className="mt-4">
       <h2>Walls</h2>
       <Row>
-        {walls.map(wall => (
+        {walls.map((wall) => (
           <Col md={4} key={wall.id} className="mb-4">
             <Card>
               <Card.Body>
                 <Card.Title>{wall.name}</Card.Title>
                 <Card.Text>Status: {wall.open ? 'Open' : 'Closed'}</Card.Text>
-                <Link to={`/walls/${wall.id}`} className="btn btn-primary">View Routes</Link>
+                <Link to={`/walls/${wall.id}`} className="btn btn-primary">
+                  View Routes
+                </Link>
+                <Link to={`/view-wall/${wall.id}`} className="btn btn-primary">
+                  View Wall
+                </Link>
               </Card.Body>
             </Card>
           </Col>

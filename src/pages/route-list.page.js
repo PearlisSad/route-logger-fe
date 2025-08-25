@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Container, Row, Col, Card, Spinner, Alert, Button } from 'react-bootstrap';
-import AddNewRoute from '../components/AddNewRoute';
+import AddNewRoute from '../components/add-new-route.component';
 
-function RouteList() {
+export default function RouteList() {
   const { id } = useParams(); // wall ID from URL
   const [routes, setRoutes] = useState([]);
   const [wallName, setWallName] = useState('');
@@ -62,10 +62,7 @@ function RouteList() {
 
       <h2 className="mb-4">Routes in {wallName}</h2>
 
-      <AddNewRoute
-        wallId={id}
-        onAdd={(newRoute) => setRoutes((prevRoutes) => [...prevRoutes, newRoute])}
-      />
+      <AddNewRoute wallId={id} onAdd={(newRoute) => setRoutes((prevRoutes) => [...prevRoutes, newRoute])} />
 
       <Row className="mt-4">
         {routes.length > 0 ? (
@@ -74,9 +71,7 @@ function RouteList() {
               <Card>
                 <Card.Body>
                   <Card.Title>Color: {route.color}</Card.Title>
-                  <Card.Subtitle className="mb-2 text-muted">
-                    Grade: {route.grade}
-                  </Card.Subtitle>
+                  <Card.Subtitle className="mb-2 text-muted">Grade: {route.grade}</Card.Subtitle>
                   <Card.Text>Rating: {route.rating || 'N/A'}</Card.Text>
                 </Card.Body>
               </Card>
@@ -91,5 +86,3 @@ function RouteList() {
     </Container>
   );
 }
-
-export default RouteList;

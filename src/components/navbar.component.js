@@ -1,8 +1,7 @@
-import React from 'react';
 import { Navbar as RBNavbar, Container, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-function Navbar() {
+export default function Navbar() {
   return (
     <RBNavbar bg="dark" variant="dark" expand="lg">
       <Container>
@@ -28,5 +27,3 @@ function Navbar() {
     </RBNavbar>
   );
 }
-
-export default Navbar;
