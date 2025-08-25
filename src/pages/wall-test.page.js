@@ -1,5 +1,5 @@
 import { useState, useCallback, useMemo } from 'react';
-import { Stage, Layer, Rect, Text, Shape } from 'react-konva';
+import { Stage, Layer, Text, Shape } from 'react-konva';
 import { useParams } from 'react-router-dom';
 
 /**
@@ -21,9 +21,15 @@ export default function WallTest() {
   // Use useCallback to prevent unnecessary re-renders of child components
   const handleClick = useCallback((e) => {
     const stage = e.target.getStage();
-    const pos = stage.getPointerPosition();
+    let pos = stage.getPointerPosition();
     if (!pos || !stage) return;
-    setPoints((prevPoints) => [...prevPoints, [pos.x, pos.y]]);
+
+    setPoints((prevPoints) => {
+      // Check for previous points and see if any are close, latching on if within 10,10
+      const closePoint = prevPoints.find((point) => Math.abs(point.x - pos.x) < 10 && Math.abs(point.y - pos.y) < 10);
+
+      return [...prevPoints, closePoint ? { x: closePoint.x, y: closePoint.y } : { x: pos.x, y: pos.y }];
+    });
   }, []);
 
   // Memoize the shape drawing function
@@ -32,9 +38,9 @@ export default function WallTest() {
       if (!points.length) return;
 
       context.beginPath();
-      context.moveTo(points[0][0], points[0][1]);
+      context.moveTo(points[0].x, points[0].y);
 
-      for (let index = 1; index < points.length; index++) context.lineTo(points[index][0], points[index][1]);
+      for (let index = 1; index < points.length; index++) context.lineTo(points[index].x, points[index].y);
 
       context.strokeShape(shape);
     },
