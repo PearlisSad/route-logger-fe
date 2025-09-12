@@ -1,4 +1,5 @@
 import { useState, useCallback, useMemo } from 'react';
+import { Container, ToggleButton } from 'react-bootstrap';
 import { Stage, Layer, Text, Shape } from 'react-konva';
 import { useParams } from 'react-router-dom';
 
@@ -8,6 +9,7 @@ import { useParams } from 'react-router-dom';
 export default function WallTest() {
   const { id } = useParams();
   const [points, setPoints] = useState([]);
+  const [editMode, setEditMode] = useState(false);
 
   // Memoize dimensions to avoid recalculation on every render
   const stageDimensions = useMemo(
@@ -19,7 +21,9 @@ export default function WallTest() {
   );
 
   // Use useCallback to prevent unnecessary re-renders of child components
-  const handleClick = useCallback((e) => {
+  const handleClick = (e) => {
+    if (!editMode) return;
+
     const stage = e.target.getStage();
     let pos = stage.getPointerPosition();
     if (!pos || !stage) return;
@@ -30,7 +34,7 @@ export default function WallTest() {
 
       return [...prevPoints, closePoint ? { x: closePoint.x, y: closePoint.y } : { x: pos.x, y: pos.y }];
     });
-  }, []);
+  };
 
   // Memoize the shape drawing function
   const sceneFunc = useCallback(
@@ -47,12 +51,21 @@ export default function WallTest() {
     [points]
   );
 
+  const handleEditModeClick = () => {
+    setEditMode(!editMode);
+  };
+
   return (
-    <Stage width={stageDimensions.width} height={stageDimensions.height} onMouseUp={handleClick}>
-      <Layer>
+    <Container class="mt-4">
+      <div>
         <Text text={`Wall ID: ${id}`} fontSize={15} x={10} y={10} />
-        {points.length > 0 && <Shape sceneFunc={sceneFunc} stroke="black" fill="blue" strokeWidth={4} />}
-      </Layer>
-    </Stage>
+        <ToggleButton variant="primary" onClick={handleEditModeClick}>
+          {editMode ? 'Stop editing' : 'Edit'}
+        </ToggleButton>
+      </div>
+      <Stage width={stageDimensions.width} height={stageDimensions.height} onMouseUp={handleClick}>
+        <Layer>{points.length > 0 && <Shape sceneFunc={sceneFunc} stroke="black" fill="blue" strokeWidth={4} />}</Layer>
+      </Stage>
+    </Container>
   );
 }

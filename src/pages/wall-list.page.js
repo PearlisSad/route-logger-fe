@@ -2,22 +2,23 @@ import { useEffect, useState } from 'react';
 import { Container, Row, Col, Card, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-function WallList() {
+export default function WallList() {
   const [walls, setWalls] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (walls.length) return;
     fetch('/api/walls/')
       .then((res) => res.json())
       .then((data) => {
-        setWalls(data);
+        setWalls(data?.walls ?? []);
         setLoading(false);
       })
       .catch((err) => {
         console.error(err);
         setLoading(false);
       });
-  });
+  }, [walls]);
 
   if (loading) {
     return (
@@ -52,5 +53,3 @@ function WallList() {
     </Container>
   );
 }
-
-export default WallList;
